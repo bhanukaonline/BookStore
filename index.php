@@ -9,6 +9,14 @@
 <body>
 <div class="container">
   <h1>Search for Books</h1>
+  <?php
+  session_start();
+  if (isset($_SESSION['username'])) {
+    echo "<p>Welcome, " . $_SESSION['username'] . "!</p>";
+  } else {
+    echo "<p>Please <a href='login.html'>login</a> to search for books.</p>";
+  }
+  ?>
   <form action="search.php" method="GET" class="search-form">
     <div class="form-group">
       <label for="title">Title:</label>
