@@ -74,7 +74,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     echo "<button onclick='addToCart(" . $row['book_id'] . ")'>Add to Cart</button>"; // Pass book_id to addToCart function
     echo "</div>";
 }
-
+echo "<a href='view_cart.php'><button>View Cart</button></a>";
 sqlsrv_free_stmt($stmt);
 sqlsrv_close($conn);
 ?>

@@ -53,6 +53,7 @@ if (isset($_SESSION['username'])) {
         }
         echo "</table>";
     }
+    echo "<button onclick='window.location.href=\"checkout.php\"'>Go to Checkout</button>";
 
     sqlsrv_free_stmt($user_stmt);
     sqlsrv_free_stmt($cart_stmt);
