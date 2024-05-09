@@ -1,14 +1,7 @@
 <?php
-
-// session_start();
-
-// if (!isset($_SESSION['username'])) {
-//   header("Location: login.html");
-//   exit();
-// }
 // Include database connection code here
 $serverName = "DESKTOP-O1U5IE6"; // Change to your server name
-$connectionOptions = array("Database" => "Bookstore", "Uid" => "sa", "PWD" => "c3@admin"); // Replace username and password
+$connectionOptions = array("Database" => "OnlineBookstoreDB", "Uid" => "sa", "PWD" => "c3@admin"); // Replace username and password
 
 $conn = sqlsrv_connect($serverName, $connectionOptions);
 
@@ -20,18 +13,18 @@ $title = $_GET['title'] ?? '';
 $author = $_GET['author'] ?? '';
 $category = $_GET['category'] ?? '';
 
-$sql = "SELECT * FROM Book WHERE 1=1";
+$sql = "SELECT * FROM Books WHERE 1=1";
 
 if (!empty($title)) {
-    $sql .= " AND Title LIKE '%$title%'";
+    $sql .= " AND title LIKE '%$title%'";
 }
 
 if (!empty($author)) {
-    $sql .= " AND Author LIKE '%$author%'";
+    $sql .= " AND author LIKE '%$author%'";
 }
 
 if (!empty($category)) {
-    $sql .= " AND Category = '$category'";
+    $sql .= " AND category = '$category'";
 }
 
 $stmt = sqlsrv_query($conn, $sql);
@@ -42,9 +35,9 @@ if ($stmt === false) {
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     echo "<div>";
-    echo "<h3>" . $row['Title'] . "</h3>";
-    echo "<p>Author: " . $row['Author'] . "</p>";
-    echo "<p>Price: $" . $row['Price'] . "</p>";
+    echo "<h3>" . $row['title'] . "</h3>";
+    echo "<p>Author: " . $row['author'] . "</p>";
+    echo "<p>Price: $" . $row['price'] . "</p>";
     echo "<button>Add to Cart</button>";
     echo "</div>";
 }

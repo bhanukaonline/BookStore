@@ -1,13 +1,8 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['username'])) {
-  header("Location: login.html");
-  exit();
-}
+$serverName = "localhost"; // Change to your server name
+$connectionOptions = array("Database" => "OnlineBookstoreDB", "Uid" => "username", "PWD" => "password"); // Replace username and password
 
-$serverName = "DESKTOP-O1U5IE6"; // Change to your server name
-$connectionOptions = array("Database" => "Bookstore", "Uid" => "sa", "PWD" => "c3@admin"); // Replace username and password
 $conn = sqlsrv_connect($serverName, $connectionOptions);
 
 if (!$conn) {
